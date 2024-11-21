@@ -7,7 +7,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
-  
+  {
+    path: 'home',
+    loadChildren: () => import('./Paginas/home/home.module').then( m => m.HomePageModule)
+  },
   {
     path: 'login',
     loadChildren: () => import('./Paginas/login/login.module').then( m => m.LoginPageModule)
@@ -28,10 +31,7 @@ const routes: Routes = [
     path: 'arrendador',
     loadChildren: () => import('./Paginas/arrendador/arrendador.module').then( m => m.ArrendadorPageModule)
   },
-  {
-    path: 'home',
-    loadChildren: () => import('./Paginas/home/home.module').then( m => m.HomePageModule)
-  },
+  
 ];
 
 @NgModule({
