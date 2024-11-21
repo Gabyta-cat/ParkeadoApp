@@ -20,11 +20,11 @@ export class RegistroPage implements OnInit {
     this.errors = []; // Limpiar errores anteriores
     this.emailInvalid = false; // Resetear estado de correo inválido
 
-    //Validación para el nombre de usuario
+    //Validación para el nombre
     if (this.usuario.trim() === '') {
-      this.errors.push('Debe ingresar un nombre de Usuario.');
-    } else if (this.usuario.length < 3) { // Validación de longitud mínima para el nombre de usuario
-      this.errors.push('El usuario debe tener al menos 3 caracteres.');
+      this.errors.push('Debe ingresar un Nombre.');
+    } else if (this.usuario.length < 3) { // Validación de longitud mínima para el nombre
+      this.errors.push('El Nombre debe tener al menos 3 caracteres.');
     }
 
     // Validación para el correo
