@@ -1,11 +1,20 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-button routerLink="/login" fill="clear" color="transparent" detail="false">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>PARKEADO</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
   <ion-img src="assets/image/parking.svg"></ion-img>
-  <ion-button>Soy Arrendador</ion-button>
-  <ion-button>Soy Cliente</ion-button>
+
+  <br/>
+  <div class="ion-padding"> 
+    <ion-button routerLink="/arrendador">Soy Arrendador</ion-button>
+    <ion-button routerLink="/cliente">Soy Cliente</ion-button>
+  </div>
 </ion-content>
