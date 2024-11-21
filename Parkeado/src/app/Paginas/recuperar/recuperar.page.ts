@@ -25,6 +25,18 @@ export class RecuperarPage implements OnInit {
       this.emailInvalid = true; // Marcar correo como inválido
     }
 
+    // Si no hay errores, navega a home
+    if (this.errors.length === 0) {
+      const navigationExtras: NavigationExtras = {
+        queryParams: {
+          email: this.correo,  // Envío del dato del input Correo
+        },
+      };
+      this.router.navigate(['login'], navigationExtras);  // Redirigir a la página de login
+    } else {
+      // Si hay errores, mostramos un mensaje (puedes hacer esto con un Toast o una alerta)
+      console.log('Errores encontrados:', this.errors);
+    }
   }
 
   // Método para validar el formato del correo
@@ -33,7 +45,5 @@ export class RecuperarPage implements OnInit {
     return regex.test(correo);  // Retorna true si el correo tiene un formato válido
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

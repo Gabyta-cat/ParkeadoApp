@@ -11,19 +11,43 @@
 
 <ion-content class="ion-padding">
   <ion-img src="assets/image/registrar.svg"></ion-img>
-  <form>
+  
+  <div id="container">
+
+    <!-- Usuario -->
     <ion-item>
-      <ion-label position="floating">Nombre</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input label="Usuario:" type="Texto" label-placement="floating" minlength="3" maxlength="15" [(ngModel)]="usuario"></ion-input>
     </ion-item>
+
+    <!-- Correo -->
+    <br/>
     <ion-item>
-      <ion-label position="floating">Correo</ion-label>
-      <ion-input type="email"></ion-input>
+      <ion-input label="Correo:" type="email" label-placement="floating" [(ngModel)]="correo" [class.invalid]="emailInvalid"></ion-input>
     </ion-item>
+
+    <!-- Contraseña -->
+    <br/>
     <ion-item>
-      <ion-label position="floating">Contraseña</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input label="Contraseña:" type="password" value="password" labelPlacement="floating" maxlength="6" 
+      [(ngModel)]="clave"></ion-input>
     </ion-item>
-    <ion-button expand="block" class="ion-padding" type="submit">Registrarse</ion-button>
-  </form>
+
+    <!-- Boton Ingresar-->
+    <div class="ion-text-center">
+      <ion-button expand="block" class="ion-padding" (click)="validadorDatos()">Registrar</ion-button>
+    </div>
+
+    <!-- Mensajes de error -->
+    <div *ngIf="errors.length > 0">
+      <ul>
+        <li *ngFor="let error of errors" style="color: rgb(230, 20, 69);">{{ error }}</li>
+      </ul>
+    </div>
+  </div>
+
 </ion-content>
+
+
+
+
+
