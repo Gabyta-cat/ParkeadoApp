@@ -9,6 +9,26 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
+  <ion-img src="assets/image/recuperar.svg"></ion-img>
+
+  <br/>
+  <!-- Correo -->
+  <ion-item>
+    <ion-input label="Correo:" type="email" label-placement="floating" [(ngModel)]="correo" [class.invalid]="emailInvalid"></ion-input>
+  </ion-item>
+
+  <br/>
+  <!-- Boton -->
+  <div class="ion-text-center">
+    <ion-button class="ion-padding" (click)="validaDato()">Recuperar</ion-button>
+  </div>
+  
+  <!-- Mensajes de error -->
+  <div *ngIf="errors.length > 0">
+    <ul>
+      <li *ngFor="let error of errors" style="color: rgb(230, 20, 69);">{{ error }}</li>
+    </ul>
+  </div>
 
 </ion-content>
