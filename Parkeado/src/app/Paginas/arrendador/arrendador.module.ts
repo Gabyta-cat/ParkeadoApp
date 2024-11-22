@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { ArrendadorPageRoutingModule } from './arrendador-routing.module';
 
 import { ArrendadorPage } from './arrendador.page';
+import { EstacionamientosComponent} from 'src/app/Componentes/estacionamientos/estacionamientos.component';
+import { PagosComponent } from 'src/app/Componentes/pagos/pagos.component';
 
 @NgModule({
   imports: [
@@ -15,6 +17,10 @@ import { ArrendadorPage } from './arrendador.page';
     IonicModule,
     ArrendadorPageRoutingModule
   ],
-  declarations: [ArrendadorPage]
+  declarations: [ArrendadorPage,
+    EstacionamientosComponent,
+    PagosComponent
+  ]
+
 })
 export class ArrendadorPageModule {}
