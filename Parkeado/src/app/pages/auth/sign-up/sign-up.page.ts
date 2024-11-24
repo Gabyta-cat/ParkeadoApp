@@ -56,7 +56,7 @@ export class SignUpPage implements OnInit {
     }
   }
 
-  async setUserInfo(uid: String) {
+  async setUserInfo(uid: string) {
     if (this.form.valid) {
 
       const loading = await this.utilsSvc.loading();
@@ -67,7 +67,7 @@ export class SignUpPage implements OnInit {
 
       this.firebaseSvc.setDocument(path, this.form.value).then(async res => {
 
-        this.utilsSvc
+        this.utilsSvc.saveInLocalStorage('user', this.form.value.uid)
 
 
       }).catch(error => {
