@@ -64,7 +64,8 @@ export class AuthPage implements OnInit {
         this.form.reset();
 
         this.utilsSvc.presentToast({
-          message: `¡Bienvenido/a ${user.name}!`,
+          message: `¡Bienvenido/a
+           ${user.name}!`,
           duration: 1500,
           color: 'primary',
           position: 'middle',
