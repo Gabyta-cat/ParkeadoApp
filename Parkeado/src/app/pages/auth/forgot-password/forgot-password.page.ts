@@ -1,6 +1,5 @@
-import { Component, Inject, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { User } from 'src/app/models/user.module';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { UtilsService } from 'src/app/services/utils.service';
 
@@ -10,7 +9,6 @@ import { UtilsService } from 'src/app/services/utils.service';
   styleUrls: ['./forgot-password.page.scss'],
 })
 export class ForgotPasswordPage implements OnInit {
-
   form = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
   })
@@ -29,17 +27,17 @@ export class ForgotPasswordPage implements OnInit {
 
       this.firebaseSvc.sendRecoveryEmail(this.form.value.email).then(res => {
 
-      this.utilsSvc.presentToast({
-        message: 'Correo enviado con exito',
-        duration: 1500,
-        color: 'primary',
-        position: 'middle',
-        icon: 'mail-outline'
-      });
+        this.utilsSvc.presentToast({
+          message: 'Correo enviado con éxito',
+          duration: 1500,
+          color: 'primary',
+          position: 'middle',
+          icon: 'mail-outline'
+        });
 
-      this.utilsSvc.routerLink('/auth');
-      this.form.reset();
-        
+        this.utilsSvc.routerLink('/auth');
+        this.form.reset();
+
       }).catch(error => {
         console.log(error);
 
@@ -61,5 +59,5 @@ export class ForgotPasswordPage implements OnInit {
 
 
 
-  
+
 
