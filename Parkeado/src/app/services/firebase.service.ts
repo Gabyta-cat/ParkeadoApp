@@ -3,7 +3,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, updateProfile} from 'firebase/auth';
 import { User } from '../models/user.module';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { getFirestore, setDoc, doc } from '@angular/fire/firestore';
+import { getFirestore, setDoc, doc, getDoc } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +31,11 @@ export class FirebaseService {
   //Base de Datos
   setDocument(path: string, data: any){
     return setDoc(doc(getFirestore(), path), data);
+  }
+
+  //Obtener un documento
+  async getDocument(path: string){
+    return (await getDoc(doc(getFirestore(), path))).data();
   }
 
 }

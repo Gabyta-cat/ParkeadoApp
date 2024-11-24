@@ -1,4 +1,4 @@
-import { Component, Inject, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user.module';
 import { FirebaseService } from 'src/app/services/firebase.service';
@@ -62,12 +62,12 @@ export class SignUpPage implements OnInit {
       const loading = await this.utilsSvc.loading();
       await loading.present();
 
-      let path = 'users/${uid}';
+      let path = `users/${uid}`;
       delete this.form.value.password;
 
       this.firebaseSvc.setDocument(path, this.form.value).then(async res => {
 
-        this.utilsSvc.saveInLocalStorage('user', this.form.value.uid)
+        this.utilsSvc.saveInLocalStorage('user', this.form.value);
         this.utilsSvc.routerLink('/main/home');
         this.form.reset();
 
