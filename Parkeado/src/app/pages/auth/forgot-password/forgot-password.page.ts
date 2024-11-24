@@ -29,6 +29,8 @@ export class ForgotPasswordPage implements OnInit {
 
       this.firebaseSvc.sendRecoveryEmail(this.form.value.email).then(res => {
 
+      
+        
       }).catch(error => {
         console.log(error);
 
