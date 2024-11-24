@@ -29,7 +29,16 @@ export class ForgotPasswordPage implements OnInit {
 
       this.firebaseSvc.sendRecoveryEmail(this.form.value.email).then(res => {
 
-      
+      this.utilsSvc.presentToast({
+        message: 'Correo enviado con exito',
+        duration: 1500,
+        color: 'primary',
+        position: 'middle',
+        icon: 'mail-outline'
+      });
+
+      this.utilsSvc.routerLink('/auth');
+      this.form.reset();
         
       }).catch(error => {
         console.log(error);
