@@ -1,5 +1,41 @@
-<app-header [isModal]="true" title="Agregar Estacionamiento"></app-header>
+<app-header [isModal]="true" title="Mis Estacionamientos"></app-header>
 
 <ion-content>
+
+    <form [formGroup]="form" class="ion-padding ion-text-center" (ngSubmit)="submit()" (keypress.enter)="submit()">
+
+        <!-- Nombre Direccion -->
+        <app-custom-input 
+        autocomplete="name"
+        [control]="form.controls.name"
+        type="text"
+        label="Dirección"
+        ></app-custom-input>
+
+        <div class="validators" *ngIf="form.controls.name.errors && form.controls.name.touched">
+            <div *ngIf="form.controls.name.errors?.['required']">El campo es requerido</div>
+            <div *ngIf="form.controls.name.errors?.['minlenght']">La dirección debe tener al menos 8 caracteres</div>
+        </div>
+
+        <!-- Precio -->
+        <app-custom-input 
+        autocomplete="price"
+        [control]="form.controls.price"
+        type="number"
+        label="Precio"
+        ></app-custom-input>
+
+        <div class="validators" *ngIf="form.controls.price.errors && form.controls.price.touched">
+            <div *ngIf="form.controls.price.errors?.['required']">El campo es requerido</div>
+            <div *ngIf="form.controls.price.errors?.['min']">La mínimo debe ser 0</div>
+        </div>
+
+
+        <ion-button mode="ios" class="ion-margin" type="submit" [disabled]="form.invalid">
+          Agregar estacionamiento
+          <ion-icon slot="end" name="checkmark-circle-outline"></ion-icon>
+        </ion-button>
+
+    </form>
 
 </ion-content>
