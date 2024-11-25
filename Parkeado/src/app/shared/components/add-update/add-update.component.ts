@@ -25,6 +25,12 @@ export class AddUpdateComponent  implements OnInit {
   ngOnInit() {
   }
 
+  //Tomar o seleccionar una imagen
+  async takeImage(){
+    const DataUrl = (await this.utilsSvc.takePicture('Imagen del estacionamiento')).dataUrl;
+    this.form.controls.image.setValue(DataUrl);
+  }
+
   async submit() {
     if (this.form.valid) {
 
