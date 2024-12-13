@@ -14,6 +14,7 @@ export class AddUpdateComponent implements OnInit {
     id: new FormControl(''),
     image: new FormControl(''), // El campo de imagen es solo para almacenar temporalmente la imagen en la UI
     name: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    city: new FormControl('', [Validators.required, Validators.minLength(4)]),
     place: new FormControl('', [Validators.required, Validators.minLength(4)]),
     price: new FormControl('', [Validators.required, Validators.min(0)]),
   });

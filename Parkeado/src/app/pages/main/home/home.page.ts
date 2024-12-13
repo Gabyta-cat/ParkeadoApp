@@ -3,6 +3,7 @@ import { User } from 'src/app/models/user.module';
 import { UtilsService } from 'src/app/services/utils.service';
 import { AddUpdateComponent } from 'src/app/shared/components/add-update/add-update.component';
 import { FirebaseService } from 'src/app/services/firebase.service';
+import { Product } from 'src/app/models/product.model';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ export class HomePage implements OnInit {
   firebaseSvc = inject(FirebaseService);
   utilsSvc = inject(UtilsService);
 
-  products: any[]= [];
+  products: Product[]= [];
 
   ngOnInit() {
   }
@@ -33,6 +34,7 @@ export class HomePage implements OnInit {
     let sub = this.firebaseSvc.getColletionData(path).subscribe({
       next: (res: any) => {
         console.log(res);
+        this.products = res;
         sub.unsubscribe();
       }
     })
