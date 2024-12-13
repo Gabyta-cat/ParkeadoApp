@@ -61,7 +61,7 @@ export class FirebaseService {
     return (await getDoc(doc(getFirestore(), path))).data();
   }
 
-  //Obtener un documento
+  //Agregar un documento
   addDocument(path: string, data: any) {
     return addDoc(collection(getFirestore(), path), data);
   }

@@ -12,7 +12,7 @@ import { Product } from 'src/app/models/product.model';
 })
 export class AddUpdateComponent implements OnInit {
 
-  @Input() product: Product
+  @Input() product: Product;
 
   form = new FormGroup({
     id: new FormControl(''),
@@ -91,12 +91,12 @@ export class AddUpdateComponent implements OnInit {
       const productData = { ...this.form.value };
 
       // Eliminar la imagen del objeto antes de enviarlo a Firebase
-      delete productData.image;
+      //delete productData.image;
 
       const loading = await this.utilsSvc.loading();
       await loading.present();
 
-      this.firebaseSvc.addDocument(path, productData).then(async (res) => {
+      this.firebaseSvc.updateDocument(path, this.form.value).then(async res => {
         this.utilsSvc.dismissModal({ success: true });
 
         this.utilsSvc.presentToast({
@@ -106,6 +106,7 @@ export class AddUpdateComponent implements OnInit {
           position: 'middle',
           icon: 'checkmark-circle-outline',
         });
+        
       }).catch((error) => {
         console.log(error);
 

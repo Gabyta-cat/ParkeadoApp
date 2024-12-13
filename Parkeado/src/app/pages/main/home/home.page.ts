@@ -15,7 +15,7 @@ export class HomePage implements OnInit {
   firebaseSvc = inject(FirebaseService);
   utilsSvc = inject(UtilsService);
 
-  products: Product[]= [];
+  products: Product[] = [];
 
   ngOnInit() {
   }
@@ -23,12 +23,12 @@ export class HomePage implements OnInit {
   user(): User{
     return this.utilsSvc.getFromLocalStorage('user');
   }
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     this.getProducts();
   }
 
   //Obtener estacionamientos
-  getProducts(){
+  getProducts() {
     let path = `users/${this.user().uid}/products`;
 
     let sub = this.firebaseSvc.getColletionData(path).subscribe({
@@ -41,13 +41,13 @@ export class HomePage implements OnInit {
   }
 
   //Agregar o actualizar producto
-  addUpdate(product?: Product){
+  addUpdate(product?: Product) {
+
     this.utilsSvc.presentModal({
       component: AddUpdateComponent,
       cssClass: 'add-update-modal',
       componentProps: { product }
     })
-
   }
-  
+
 }
