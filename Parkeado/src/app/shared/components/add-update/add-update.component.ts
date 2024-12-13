@@ -17,6 +17,7 @@ export class AddUpdateComponent implements OnInit {
     city: new FormControl('', [Validators.required, Validators.minLength(4)]),
     place: new FormControl('', [Validators.required, Validators.minLength(4)]),
     price: new FormControl('', [Validators.required, Validators.min(0)]),
+    hours: new FormControl('', [Validators.required, Validators.min(0)]),
   });
 
   firebaseSvc = inject(FirebaseService);

@@ -3,5 +3,6 @@ export interface Product{
     name: string,
     city: string,
     place: string,
-    price: number
+    price: number,
+    hours:  number
 }
