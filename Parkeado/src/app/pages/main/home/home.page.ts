@@ -52,4 +52,60 @@ export class HomePage implements OnInit {
     if(success) this.getProducts();
   }
 
+  //Confirma la eliminación del producto
+  async confirmDeleteProduct(product: Product) {
+      this.utilsSvc.presentAlert({
+      header: 'Eliminar Estacionamiento',
+      message: '¿Quieres eliminar este estacionamiento?',
+      mode: 'ios',
+      buttons: [
+        {
+          text: 'Cancelar',
+        }, {
+          text: 'Si, eliminar',
+          handler: () => {
+            this.deleteProduct(product)
+          }
+        }
+      ]
+    });
+
+  }
+
+
+  //*********** Eliminar *******************
+  async deleteProduct(product: Product) {
+
+    let path = `users/${this.user().uid}/products/${product.id}`;
+
+    const loading = await this.utilsSvc.loading();
+    await loading.present();
+
+    this.firebaseSvc.deleteDocument(path).then(async res => {
+
+      this.products = this.products.filter(p => p.id !== product.id);
+
+      this.utilsSvc.presentToast({
+        message: 'Estacionamiento eliminado',
+        duration: 1500,
+        color: 'success',
+        position: 'middle',
+        icon: 'checkmark-circle-outline',
+      });
+      
+    }).catch((error) => {
+      console.log(error);
+
+      this.utilsSvc.presentToast({
+        message: error.message,
+        duration: 2500,
+        color: 'primary',
+        position: 'middle',
+        icon: 'alert-circle-outline',
+      });
+    }).finally(() => {
+      loading.dismiss();
+    });
+}
+
 }

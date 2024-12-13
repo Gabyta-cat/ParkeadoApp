@@ -29,8 +29,8 @@
         <ion-item-option (click)="addUpdate(p)">
           <ion-icon class="option-btn" slot="start" name="create-outline"></ion-icon>
         </ion-item-option>
-        <!-- Modificar -->
-        <ion-item-option color="danger">
+        <!-- Eliminar -->
+        <ion-item-option (click)="confirmDeleteProduct(p)" color="danger">
           <ion-icon class="option-btn" slot="start" name="trash-outline"></ion-icon>
         </ion-item-option>
 
