@@ -11,7 +11,7 @@ export class AppComponent {
     this.initializeApp();
   }
   initializeApp() {
-    this.router.navigateByUrl('main/home') //Cambiar por Splash
+    this.router.navigateByUrl('splash') //Cambiar por Splash
   };
 
 }
