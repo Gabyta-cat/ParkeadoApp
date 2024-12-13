@@ -1,6 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { User } from 'src/app/models/user.module';
 import { UtilsService } from 'src/app/services/utils.service';
 import { AddUpdateComponent } from 'src/app/shared/components/add-update/add-update.component';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +11,31 @@ import { AddUpdateComponent } from 'src/app/shared/components/add-update/add-upd
 })
 export class HomePage implements OnInit {
 
+  firebaseSvc = inject(FirebaseService);
   utilsSvc = inject(UtilsService);
 
+  products: any[]= [];
+
   ngOnInit() {
+  }
+
+  user(): User{
+    return this.utilsSvc.getFromLocalStorage('user');
+  }
+  ionViewWillEnter(){
+    this.getProducts();
+  }
+
+  //Obtener estacionamientos
+  getProducts(){
+    let path = `users/${this.user().uid}/products`;
+
+    let sub = this.firebaseSvc.getColletionData(path).subscribe({
+      next: (res: any) => {
+        console.log(res);
+        sub.unsubscribe();
+      }
+    })
   }
 
   //Agregar o actualizar producto

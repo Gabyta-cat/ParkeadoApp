@@ -29,7 +29,7 @@ export class AddUpdateComponent implements OnInit {
   // Tomar o seleccionar una imagen
   async takeImage() {
     const dataUrl = (await this.utilsSvc.takePicture('Imagen del estacionamiento')).dataUrl;
-    this.form.controls.image.setValue(dataUrl); // Almacena la imagen solo en el formulario (temporalmente)
+    this.form.controls.image.setValue(dataUrl); // Almacena la imagen (temporalmente)
   }
 
   // Enviar el formulario sin la imagen a Firebase
