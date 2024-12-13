@@ -62,6 +62,7 @@
         [control]="form.controls.price"
         type="number"
         label="Valor por Hora"
+        (IonInput)="setNumberInputs()"
         ></app-custom-input>
 
         <div class="validators" *ngIf="form.controls.price.errors && form.controls.price.touched">
@@ -74,6 +75,7 @@
         [control]="form.controls.hours"
         type="number"
         label="Tiempo reservado"
+        (IonInput)="setNumberInputs()"
         ></app-custom-input>
 
         <div class="validators" *ngIf="form.controls.hours.errors && form.controls.hours.touched">

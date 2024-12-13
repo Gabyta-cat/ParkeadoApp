@@ -20,7 +20,7 @@ export class HomePage implements OnInit {
   ngOnInit() {
   }
 
-  user(): User{
+  user(): User {
     return this.utilsSvc.getFromLocalStorage('user');
   }
   ionViewWillEnter() {
@@ -49,12 +49,12 @@ export class HomePage implements OnInit {
       componentProps: { product }
     })
 
-    if(success) this.getProducts();
+    if (success) this.getProducts();
   }
 
   //Confirma la eliminación del producto
   async confirmDeleteProduct(product: Product) {
-      this.utilsSvc.presentAlert({
+    this.utilsSvc.presentAlert({
       header: 'Eliminar Estacionamiento',
       message: '¿Quieres eliminar este estacionamiento?',
       mode: 'ios',
@@ -92,7 +92,7 @@ export class HomePage implements OnInit {
         position: 'middle',
         icon: 'checkmark-circle-outline',
       });
-      
+
     }).catch((error) => {
       console.log(error);
 
@@ -106,6 +106,6 @@ export class HomePage implements OnInit {
     }).finally(() => {
       loading.dismiss();
     });
-}
+  }
 
 }
