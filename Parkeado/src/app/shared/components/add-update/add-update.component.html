@@ -1,4 +1,4 @@
-<app-header [isModal]="true" title="Mis Estacionamientos"></app-header>
+<app-header [isModal]="true" [title]="product ? 'Actualizar Estacionamiento' : 'Agregar Estacionamiento'"></app-header>
 
 <ion-content>
 
@@ -84,7 +84,7 @@
 
         <!-- Botón para enviar el formulario -->
         <ion-button mode="ios" class="ion-margin" type="submit" [disabled]="form.invalid">
-          Agregar estacionamiento
+            {{ product ? 'Actualizar Estacionamiento' : 'Agregar Estacionamiento' }}
           <ion-icon slot="end" name="checkmark-circle-outline"></ion-icon>
         </ion-button>
 

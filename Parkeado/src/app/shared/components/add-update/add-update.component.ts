@@ -16,7 +16,7 @@ export class AddUpdateComponent implements OnInit {
 
   form = new FormGroup({
     id: new FormControl(''),
-    image: new FormControl(''), // El campo de imagen es solo para almacenar temporalmente la imagen en la UI
+    image: new FormControl('', [Validators.required]), // El campo de imagen es solo para almacenar temporalmente la imagen en la UI
     name: new FormControl('', [Validators.required, Validators.minLength(8)]),
     city: new FormControl('', [Validators.required, Validators.minLength(4)]),
     place: new FormControl('', [Validators.required, Validators.minLength(4)]),
@@ -91,7 +91,7 @@ export class AddUpdateComponent implements OnInit {
       const productData = { ...this.form.value };
 
       // Eliminar la imagen del objeto antes de enviarlo a Firebase
-      //delete productData.image;
+      delete productData.image;
 
       const loading = await this.utilsSvc.loading();
       await loading.present();
