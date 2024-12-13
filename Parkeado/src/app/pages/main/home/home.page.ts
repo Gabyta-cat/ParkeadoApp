@@ -41,10 +41,11 @@ export class HomePage implements OnInit {
   }
 
   //Agregar o actualizar producto
-  addUpdate(){
+  addUpdate(product?: Product){
     this.utilsSvc.presentModal({
       component: AddUpdateComponent,
-      cssClass: 'add-update-modal'
+      cssClass: 'add-update-modal',
+      componentProps: { product }
     })
 
   }
