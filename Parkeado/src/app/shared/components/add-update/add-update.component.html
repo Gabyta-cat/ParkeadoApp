@@ -4,21 +4,21 @@
 
     <form [formGroup]="form" class="ion-padding ion-text-center" (ngSubmit)="submit()" (keypress.enter)="submit()">
 
-        <!-- Si existe una imagen -->
+        <!-- Si existe una imagen, mostrarla -->
         <ion-avatar *ngIf="form.value.image">
-            <img [src]="form.value.image"/>
+            <img [src]="form.value.image" />
         </ion-avatar>
 
-        <!-- Si no existe una imagen -->
+        <!-- Si no existe una imagen, mostrar el ícono -->
         <ion-icon class="image-icon" *ngIf="!form.value.image" name="image-outline"></ion-icon>
         <br>
+
         <!-- Tomar o seleccionar una imagen -->
         <ion-button (click)="takeImage()" mode="ios" size="small" shape="round">
             Tomar/Seleccionar
         </ion-button>
 
-        
-        <!-- Nombre Direccion -->
+        <!-- Nombre Dirección -->
         <app-custom-input 
         autocomplete="name"
         [control]="form.controls.name"
@@ -28,7 +28,7 @@
 
         <div class="validators" *ngIf="form.controls.name.errors && form.controls.name.touched">
             <div *ngIf="form.controls.name.errors?.['required']">El campo es requerido</div>
-            <div *ngIf="form.controls.name.errors?.['minlenght']">La dirección debe tener al menos 8 caracteres</div>
+            <div *ngIf="form.controls.name.errors?.['minlength']">La dirección debe tener al menos 8 caracteres</div>
         </div>
 
         <!-- Tipo Lugar -->
@@ -41,7 +41,7 @@
 
         <div class="validators" *ngIf="form.controls.place.errors && form.controls.place.touched">
             <div *ngIf="form.controls.place.errors?.['required']">El campo es requerido</div>
-            <div *ngIf="form.controls.place.errors?.['minlenght']">El lugar debe tener al menos 4 caracteres</div>
+            <div *ngIf="form.controls.place.errors?.['minlength']">El lugar debe tener al menos 4 caracteres</div>
         </div>
 
         <!-- Precio -->
@@ -56,19 +56,7 @@
             <div *ngIf="form.controls.price.errors?.['min']">La mínimo debe ser 0</div>
         </div>
 
-        <!-- Veces reservado -->
-        <app-custom-input
-        [control]="form.controls.soldUnits"
-        type="number"
-        label="Cantidad de Reservaciones"
-        ></app-custom-input>
-
-        <div class="validators" *ngIf="form.controls.soldUnits.errors && form.controls.soldUnits.touched">
-            <div *ngIf="form.controls.soldUnits.errors?.['required']">El campo es requerido</div>
-            <div *ngIf="form.controls.soldUnits.errors?.['min']">La mínimo debe ser 0</div>
-        </div>
-
-
+        <!-- Botón para enviar el formulario -->
         <ion-button mode="ios" class="ion-margin" type="submit" [disabled]="form.invalid">
           Agregar estacionamiento
           <ion-icon slot="end" name="checkmark-circle-outline"></ion-icon>

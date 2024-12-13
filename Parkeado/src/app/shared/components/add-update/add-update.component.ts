@@ -9,41 +9,54 @@ import { UtilsService } from 'src/app/services/utils.service';
   templateUrl: './add-update.component.html',
   styleUrls: ['./add-update.component.scss'],
 })
-export class AddUpdateComponent  implements OnInit {
+export class AddUpdateComponent implements OnInit {
   form = new FormGroup({
     id: new FormControl(''),
-    image: new FormControl('', [Validators.required]),
+    image: new FormControl(''), // El campo de imagen es solo para almacenar temporalmente la imagen en la UI
     name: new FormControl('', [Validators.required, Validators.minLength(8)]),
     place: new FormControl('', [Validators.required, Validators.minLength(4)]),
     price: new FormControl('', [Validators.required, Validators.min(0)]),
-    soldUnits: new FormControl('', [Validators.required, Validators.min(0)]),
-  })
+  });
 
   firebaseSvc = inject(FirebaseService);
-  utilsSvc = inject(UtilsService)
+  utilsSvc = inject(UtilsService);
+  user = {} as User;
 
   ngOnInit() {
+    this.user = this.utilsSvc.getFromLocalStorage('user');
   }
 
-  //Tomar o seleccionar una imagen
-  async takeImage(){
-    const DataUrl = (await this.utilsSvc.takePicture('Imagen del estacionamiento')).dataUrl;
-    this.form.controls.image.setValue(DataUrl);
+  // Tomar o seleccionar una imagen
+  async takeImage() {
+    const dataUrl = (await this.utilsSvc.takePicture('Imagen del estacionamiento')).dataUrl;
+    this.form.controls.image.setValue(dataUrl); // Almacena la imagen solo en el formulario (temporalmente)
   }
 
+  // Enviar el formulario sin la imagen a Firebase
   async submit() {
     if (this.form.valid) {
+      let path = `users/${this.user.uid}/products`;
+
+      // Crear un objeto de datos a enviar sin la imagen
+      const productData = { ...this.form.value };
+
+      // Eliminar la imagen del objeto antes de enviarlo a Firebase
+      delete productData.image;
 
       const loading = await this.utilsSvc.loading();
       await loading.present();
 
-      this.firebaseSvc.signUp(this.form.value as User).then(async res => {
+      this.firebaseSvc.addDocument(path, productData).then(async (res) => {
+        this.utilsSvc.dismissModal({ success: true });
 
-        await this.firebaseSvc.updateUser(this.form.value.name);
-
-        let uid = res.user.uid;
-
-      }).catch(error => {
+        this.utilsSvc.presentToast({
+          message: 'Estacionamiento Agregado',
+          duration: 1500,
+          color: 'success',
+          position: 'middle',
+          icon: 'checkmark-circle-outline',
+        });
+      }).catch((error) => {
         console.log(error);
 
         this.utilsSvc.presentToast({
@@ -51,13 +64,11 @@ export class AddUpdateComponent  implements OnInit {
           duration: 2500,
           color: 'primary',
           position: 'middle',
-          icon: 'alert-circle-outline'
-        })
-
+          icon: 'alert-circle-outline',
+        });
       }).finally(() => {
         loading.dismiss();
-      })
+      });
     }
   }
 }
-
