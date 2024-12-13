@@ -10,5 +10,23 @@
 </ion-header>
 
 <ion-content>
+  <ion-segment [(ngModel)]="selectedSegment">
+    <ion-segment-button value="estacionamientos">
+      <ion-label>Estacionamientos</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="pagos">
+      <ion-label>Historial de Pagos</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <!-- Mostrar el componente adecuado dependiendo de la pestaña seleccionada -->
+  <ng-container *ngIf="selectedSegment === 'estacionamientos'">
+    <app-estacionamientos></app-estacionamientos>
+  </ng-container>
+
+  <ng-container *ngIf="selectedSegment === 'pagos'">
+    <!-- Aquí se podría incluir otro componente para el historial de pagos -->
+    <app-pagos></app-pagos>
+  </ng-container>
 
 </ion-content>

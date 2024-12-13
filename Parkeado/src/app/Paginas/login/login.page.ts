@@ -21,12 +21,12 @@ export class LoginPage implements OnInit {
     this.errors = []; // Limpiar errores anteriores
     this.emailInvalid = false; // Resetear estado de correo inválido
 
-    // Validación para el nombre de usuario
-    //if (this.usuario.trim() === '') {
-    //  this.errors.push('Debe ingresar un nombre de Usuario.');
-    //} else if (this.usuario.length < 3) { // Validación de longitud mínima para el nombre de usuario
-    //  this.errors.push('El usuario debe tener al menos 3 caracteres.');
-    //}
+    //Validación para el nombre de usuario
+    if (this.usuario.trim() === '') {
+      this.errors.push('Debe ingresar un nombre de Usuario.');
+    } else if (this.usuario.length < 3) { // Validación de longitud mínima para el nombre de usuario
+      this.errors.push('El usuario debe tener al menos 3 caracteres.');
+    }
 
     // Validación para el correo
     if (this.correo.trim() === '') {

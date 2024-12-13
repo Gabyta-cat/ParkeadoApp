@@ -31,6 +31,10 @@ const routes: Routes = [
     path: 'arrendador',
     loadChildren: () => import('./Paginas/arrendador/arrendador.module').then( m => m.ArrendadorPageModule)
   },
+  {
+    path: 'administrador',
+    loadChildren: () => import('./Paginas/administrador/administrador.module').then( m => m.AdministradorPageModule)
+  },
   
 ];
 
