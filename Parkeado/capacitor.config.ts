@@ -2,7 +2,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.parkeado.app',
-  appName: 'com.parkeado.app',
+  appName: 'Parkeado',
   webDir: 'www'
 };
 
