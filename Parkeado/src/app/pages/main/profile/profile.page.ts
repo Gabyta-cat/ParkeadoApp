@@ -29,6 +29,8 @@ export class ProfilePage implements OnInit {
     let path = `users/${user.uid}`;
 
     const dataUrl = (await this.utilsSvc.takePicture('Imagen del Perfil')).dataUrl;
+    user.image = dataUrl; // Asigna la imagen tomada al objeto user
+
 
     const loading = await this.utilsSvc.loading();
     await loading.present();
