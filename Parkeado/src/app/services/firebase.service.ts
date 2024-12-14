@@ -48,7 +48,6 @@ export class FirebaseService {
     this.utilsSvc.routerLink('/auth');
   }
 
-
   //******************Base de Datos*************
   //Obtener documentos de coleccion
   getColletionData(path: string, collectionQuery?: any){
