@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "646919569979",
+    "project_id": "parkeado-app-2bf0f",
+    "storage_bucket": "parkeado-app-2bf0f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:646919569979:android:e14028e3474e32d225d21e",
+        "android_client_info": {
+          "package_name": "com.parkeado.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4K1rF9703AeAPv-HnmK6wudnh5-NERQw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
