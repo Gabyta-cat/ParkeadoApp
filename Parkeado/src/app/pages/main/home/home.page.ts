@@ -23,6 +23,7 @@ export class HomePage implements OnInit {
   user(): User {
     return this.utilsSvc.getFromLocalStorage('user');
   }
+  
   ionViewWillEnter() {
     this.getProducts();
   }

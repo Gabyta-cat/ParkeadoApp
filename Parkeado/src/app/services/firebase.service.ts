@@ -41,6 +41,13 @@ export class FirebaseService {
     return sendPasswordResetEmail(getAuth(), email);
   }
 
+  //Cerrar sesion
+  signOut(){
+    getAuth().signOut();
+    localStorage.removeItem('user');
+    this.utilsSvc.routerLink('/auth');
+  }
+
 
   //******************Base de Datos*************
   //Obtener documentos de coleccion
@@ -76,4 +83,5 @@ export class FirebaseService {
     return deleteObject(ref(getStorage(),path));
 
   }
+
 }
